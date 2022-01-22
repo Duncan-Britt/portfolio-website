@@ -1,6 +1,6 @@
 11/14/2021
 <div>
-<a class="portfolio_link" href="#word_ladders_writeup">AI Generated Word Ladder Puzzles & Web App</a><time datetime="2022-01-12">01/12/2022</time>
+<a class="portfolio_link" href="#word_ladders_writeup">Software-Generated Word Ladder Puzzles & Web App</a><time datetime="2022-01-12">01/12/2022</time>
 <article id="word_ladders_writeup" loading="lazy">
 <br>
 <a target="_blank" rel="noopener noreferrer" href="https://word-ladders.herokuapp.com/">Site</a>
@@ -51,7 +51,7 @@ User input steps are considered valid if
 
 ## Generating Puzzles
 
-I parsed the data from a csv file of 5,000 most commonly used English words and created a graphical representation of the data, which I then serialized to a YAML file so that my ruby code can more efficiently recreate it. Each vertex in the graph represents a word. The neighbors of every vertex in the graph are the vertices whose word is "adjacent" to the word stored by the vertex.
+I parsed the data from a csv file of 5,000 most commonly used English words into a graphical representation of the data, which I then serialized to a YAML file so that my ruby code can more efficiently recreate it. Each vertex in the graph represents a word. The neighbors of every vertex in the graph are the vertices whose word is "adjacent" to the word stored by the vertex.
 
 <figure>
 

@@ -161,7 +161,7 @@ h3 a {
 }
 
 p, ul, ol, article {
-  max-width: 60ch; /* Limit line-length to 60 characters */
+  max-width: 84ch; /* Limit line-length to 60 characters */
   margin-bottom: .6em;
 }
 
