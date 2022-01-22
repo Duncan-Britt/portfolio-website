@@ -6,11 +6,8 @@
   --visited: #c1b7a9;
   --highlight: #79b2a8;
   --header: #fac50e;
-  /* --bg-code: rgba(121, 178, 168, 40%); */
   --bg-code: rgba(255, 255, 255, 17%);
 }
-
-
 
 * {
   margin: 0;
@@ -27,7 +24,6 @@
     --visited: #80796f;
     --highlight: #bdfcff;
     --header: #000;
-    /* --bg-code: rgba(189, 252, 255, 40%); */
     --bg-code: rgba(0, 0, 0, 7%);
   }
 }
@@ -50,7 +46,8 @@ time:before {
 
 body {
   font-size: 18px;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; */
+  font-family: Lucida Grande, Verdana, Geneva, Tahoma, Helvetica, Arial, sans-serif;
 
   line-height: 1.4;
   color: var(--textcolor);
@@ -71,14 +68,17 @@ section {
   min-height: 100vh;
   width: 100%;
   background: var(--bgcolor);
+  z-index: 1;
 }
 
 section:target { /* Show section */
   display: block;
 }
 
-section#duncan_britt { /* Show #home by default */
-  display: block;
+/* Show #home by default */
+section#duncan_britt {
+  /* display: block; */
+  z-index: 0;
 }
 
 .portfolio_link ~ article > * {
@@ -88,9 +88,7 @@ section#duncan_britt { /* Show #home by default */
 /* ----- Articles ----- */
 article {
   display: none;
-  /* font-family: Georgia, Times New Roman, serif; */
 }
-/* article:target { display: block; } */
 
 /* ------- Header ------- */
 
@@ -109,10 +107,6 @@ header h1 {
   white-space: nowrap;
   padding: 0 5vw .5em 0;
 }
-
-/* nav a:not(:last-of-type) {
-  margin-right: 1.5vw;
-} */
 
 /* ------- General ------- */
 
@@ -137,14 +131,14 @@ a:visited:hover {
 }
 
 section h1, section h2 {
-  font-size: 1em;
+  font-size: 1.2em;
   color: var(--header);
   /* margin: 0 0 1em 0; */
 }
 
-section h2:before {
-  content: "## ";
-}
+/* section h2:before {
+  content: "\25B8  ";
+} */
 
 h2, h3 {
   margin: 0 0 .2em 0;
@@ -170,10 +164,7 @@ ul {
 }
 
 ul li::marker {
-  /* content: "\2022   "; */
-  /* content: "- "; */
-  /* content: "\271A  " */
-  content: "- "
+  content: "\25B8  ";
 }
 
 ol {
@@ -243,27 +234,12 @@ img, svg, video, audio {
   fill: currentColor;
 }
 
-/* article {
-  font-family: Georgia, Times New Roman, serif;
-} */
-
 code {
-  /* font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; */
-  /* color: var(--link); */
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   padding: 0 .2em;
   background-color: var(--bg-code);
   letter-spacing: 2px;
 }
-
-/* code, textarea {
-  font-family: ui-monospace, SF Mono, Menlo, Monaco, Andale Mono, monospace;
-  font-size: 1em;
-  opacity: .7;
-}
-
-a code {
-  opacity:1;
-} */
 
 pre, textarea { /* for code samples */
   font-size: .9em;
@@ -295,10 +271,6 @@ figcaption {
   margin-bottom: 1.5em;
 }
 
-/* label:hover {
-  color: var(--highlight);
-} */
-
 label:before {content:"[";}
 label:after {content:"]";}
 
@@ -324,40 +296,12 @@ figure figcaption {
   opacity: .7;
 }
 
-/* Responsive video embeds */
-
-figure.video {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-  overflow: hidden;
-}
-
-figure.video iframe, figure.video object, figure.video embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  visibility: hidden; /* so loading="lazy" should work? */
-}
-
-section:target iframe {
-  visibility: visible;
-}
-
 /* External links */
 
 a[href*="//"]:after {
   font-weight: 300;
   font-size: .85em;
   content: "\2197"; /* top right arrow: ↗ */
-}
-
-a[href*="//"]:hover:after {
-  /* color: var(--highlight); */
-  /* opacity: 1; */
 }
 
 /* File links */
@@ -395,135 +339,6 @@ article time {
   font-size: .8em;
   font-weight: 400;
   opacity: .7;
-}
-
-/* ------- Images Grid ------- */
-
-.grid {
-  display: grid;
-  grid-gap: 5vmin;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 150px = minimum image size */
-  grid-auto-flow: dense;
-  padding: 2em 0;
-}
-
-.grid a {
-  position: relative;
-  border: 0;
-}
-
-.grid a:hover {
-  transform: scale(.975);
-}
-
-/* For a square ratio */
-.grid a:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-
-.grid a img {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* ------- Slideshow ------- */
-
-.slides {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-
-.slides figure {
-  height: 100vh;
-  padding: 0 5vw;
-  margin: 0;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  scroll-snap-align: center;
-}
-
-.slides figure img {
-  max-height: 88vh; /* Adjust if needed */
-}
-
-.slides figure.cover {
-  padding: 0;
-}
-
-.slides figure.cover img {
-  max-height: none;
-  position: absolute;
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-}
-
-/* ------- Lightbox ------- */
-
-.lightbox {
-  display: none;
-  color: var(--textcolor);
-}
-
-.lightbox:target {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  background: var(--bgcolor);
-  border: 0;
-  z-index: 3;
-}
-
-.lightbox img {
-  max-height: 100vh;
-  z-index: 4;
-}
-
-.lightbox:target:before { /* Loading spinner */
-  content:"";
-  height: 2em;
-  width: 2em;
-  animation: spin .8s infinite linear;
-  border: 1px solid;
-  border-right-color: transparent;
-  border-radius: 50%;
-  display: block;
-  position: absolute;
-  transform: translateX(-50%);
-  opacity: .25;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.lightbox:target:after { /* × to close */
-  content: "\00D7";
-  position: fixed;
-  font-size: 2em;
-  font-weight: 200;
-  line-height: 0;
-  top: .75em;
-  right: .5em;
-  z-index: 4;
 }
 
 /* ------- Smaller screens ------- */

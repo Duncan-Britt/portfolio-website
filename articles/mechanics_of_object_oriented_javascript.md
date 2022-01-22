@@ -2,6 +2,7 @@
 <div>
 <a class="article_link" href="#oojs">Mechanics Of Object Orient JavaScript</a><time datetime="2021-11-14">11/14/2021</time>
 <article id="oojs" loading="lazy">
+<br>
 
 Hopefully this will help you understand how you can implement object oriented design in JavaScript and why it works the way it does.
 
@@ -32,9 +33,9 @@ aFunction.prototype.constructor === aFunction; // true
 
 #### Prototypes
 
-In JavaScript, every object has an object prototype referenced by its **`[[Prototype]]`** property. This property can be accessed by the **`\_\_proto\_\_`** accessor method. (It’s pronounced “dunder proto” due to its leading and trailing double underscores). It’s important to note the distinction between a function’s prototype property and the `[[Prototype]]` property which belongs to all objects (including functions).
+In JavaScript, every object has an object prototype referenced by its **`[[Prototype]]`** property. This property can be accessed by the **`__proto__`** accessor method. (It’s pronounced “dunder proto” due to its leading and trailing double underscores). It’s important to note the distinction between a function’s `prototype` property and the `[[Prototype]]` property which belongs to all objects (including functions).
 
-*Before going further, I should mention that accessing an object’s* `[[Prototype]]` *directly via the* `\_\_proto\_\_` *accessor is deprecated. JavaScript provides the methods* `Object.getPrototypeOf` *and* `Object.setPrototypeOf` *to access an object’s* `[[Prototype]]`. *However, I will continue to use* `\_\_proto\_\_` *for explanatory purposes. If you want to test my code in your browser and you find that* `\_\_proto\_\_` *doesn’t work, you can substitute* `foo.\_\_proto\_\_` *with* `Object.getPrototypeOf(foo)` *and it should work.*
+*Before going further, I should mention that accessing an object’s* `[[Prototype]]` *directly via the* `__proto__` *accessor is deprecated. JavaScript provides the methods* `Object.getPrototypeOf` *and* `Object.setPrototypeOf` *to access an object’s* `[[Prototype]]`. *However, I will continue to use* `__proto__` *for explanatory purposes. If you want to test my code in your browser and you find that* `__proto__` *doesn’t work, you can substitute* `foo.__proto__` *with* `Object.getPrototypeOf(foo)` *and it should work.*
 
 When creating an object via an object literal, its `[[Prototype]]` property refers to the same object referenced by `Object.prototype`, which serves as the base `[[Prototype]]` for all objects. This base prototype object has its own `[[Prototype]]` property which stores `null`.
 
@@ -259,8 +260,8 @@ The process for making a subtype is fairly straightforward.
 
 <textarea>
 const ChildPrototype = Object.create(Prototype);
-ChildPrototype.init.call = function(a, b) {
-  Prototype.init.call(this, a);
+ChildPrototype.init = function(a, b) {
+  Prototype.init(this, a);
   this.b = b;
   return this;
 };

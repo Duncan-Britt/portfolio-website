@@ -62,43 +62,6 @@ I parsed the data from a csv file of 5,000 most commonly used English words into
 
 Among my 5k words, it is possible find two words between which there simply is no path. So inorder to not waste time solving for the shortest path between two words for whom no path exists, my program first creates a ladder randomly.
 
-<textarea data-lang="ruby">
-class WordGraph
-  #...
-  def make_ladder(length)
-    ladder = nil
-    loop do
-      v = random_vertex
-      ladder = make_sub_ladder(v: v, length: length, prev: [])
-      break if ladder
-    end
-    ladder.map { |v| v.data }
-  end
-
-  def make_sub_ladder(v: random_vertex, length: 3, prev: [])
-    ladder = [v]
-    return ladder if ladder.length == length
-
-    neighbors = v.neighbors - prev
-    neighbors.select! do |neighbor|
-      prev.none? { |v| WordGraph.adjacent?(v.data, neighbor.data) }
-    end
-
-    return nil if neighbors.empty?
-    neighbors.shuffle!
-    sub_ladder = nil
-    neighbors.each do |n|
-      sub_ladder = make_sub_ladder(v: n, length: length - 1, prev: ladder + prev)
-      break if sub_ladder
-    end
-
-    sub_ladder && ladder + sub_ladder
-  end
-  #...
-end
-</textarea>
-<br>
-
 Then, my program takes the first and last words from the random ladder, ignores the rest, and attempts to find the shortest path between them using a breadth first search of the graph. If it takes too long, (if the queue is getting too long) it will inform the calling method which will try again with an entirely new random word ladder.
 
 <textarea data-lang="ruby">

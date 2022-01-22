@@ -30,7 +30,7 @@ object.bar(); // prints Hello, World!
 </textarea>
 ![diagram](images/1.svg)
 
-Rather than thinking in terms of functions vs methods, in JavaScript, it makes more sense to think in terms of *function invocation*- via **`foo();`** vs *method invocation*- à la **`object.bar()`**. Method invocation in JavaScript is when a function is called on an object. Another way of saying this is that it is invoked with an explicit receiver- whereas function invocation is when a function is invoked with an implicit receiver. The implicit receiver of a (function) invocation is the global object. In a browser, this is the **`window`** object.
+Rather than thinking in terms of functions vs methods, in JavaScript, it makes more sense to think in terms of *function invocation*- via **`foo();`** vs *method invocation*- à la **`object.bar()`**. Method invocation in JavaScript is when a function is called on an object. Another way of saying this is that it is invoked with an *explicit receiver*- whereas function invocation is when a function is invoked with an *implicit receiver*. The implicit receiver of a (function) invocation is the global object. In a browser, this is the **`window`** object.
 
 Normally, within a function/method definition, **`this`** references the receiver of an invocation thereof. Even so, the consequences might seem strange. Consider the following code snippet:
 
@@ -74,7 +74,7 @@ It is irrelevant that **`double`** is a property of the **`doubler`** object. It
 
 #### Context Loss
 
-In the last example, the fact that this within double doesn’t reference doubler when invoked is called context loss. There are a variety of strategies to deal with context loss. 
+In the last example, the fact that `this` within `double` doesn’t reference doubler when invoked is called context loss. There are a variety of strategies to deal with context loss. 
 
 #### **`this`** Argument
 
@@ -117,11 +117,11 @@ doubler.doubleAll([1, 2, 3]); // returns [2, 4, 6]
 </textarea>
 <br />
 
-Since our arrow function is defined within the body of **doubleAll**, **this** within the arrow function references the execution context of the invocation of **doubleAll**.
+Since our arrow function is defined within the body of `doubleAll`, `this` within the arrow function references the execution context of the invocation of `doubleAll`.
 
 #### Variable Assignment - self
 
-Another idiom for dealing with context loss is to assign **this** to a local variable, oft called **self**, and replace references to **this** with **self**.
+Another idiom for dealing with context loss is to assign `this` to a local variable, such as `self`, and replace `this` with `self` within the callback function.
 
 <textarea>
 const doubler = {
@@ -143,9 +143,9 @@ doubler.doubleAll([1, 2, 3]); // returns [2, 4, 6]
 </textarea>
 <br />
 
-This works because the object referenced by self is not context dependent. **self** is simply a local variable, accessible to nested functions via closure.
+This works because the object referenced by `self` is not context dependent. `self` is simply a local variable, forever accessible to nested functions via closure.
 
-#### bind
+#### `bind`
 
 We could use the **bind** method to return a new function whose execution context is permanently and irreversibly hard bound to the first argument of bind.
 
@@ -166,7 +166,7 @@ const doubler = {
 doubler.doubleAll([1, 2, 3]); // returns [2, 4, 6]
 </textarea>
 
-#### call & apply
+#### `call` & `apply`
 
 This example problem doesn’t lend itself to the final idiom for dealing with context loss that I will show you, so I’ll offer a different example. The **call** and **apply** methods can each be used to to invoke a function with its execution context set to the first argument to the invocation thereof. Behold:
 

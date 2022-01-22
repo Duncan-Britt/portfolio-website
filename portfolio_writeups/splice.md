@@ -10,10 +10,9 @@
 
 ## Overview
 
-Splice supports nesting, partial templates, iterators, conditionals, variable assignment, local scope, comments, escape characters, and escapes HTML by default. In its minified form, it is only _ KB, uncompressed, and has no dependencies.
+Splice supports nesting, partial templates, iterators, conditionals, variable assignment, local scope, comments, escape characters, and escapes HTML by default. In its minified form, it is only 3.06 KB uncompressed, and has no dependencies.
 
-I've written extensively about *how to use* Splice, and that writing is available on the <a target="_blank" rel="noopener noreferrer" href="https://duncan-britt.github.io/splice-docs">documentation website.</a> I will use this space to talk about the implementation of the language, design process/choices, and open issues.
-=
+I've written extensively about *how to use* Splice, and that writing is available on the <a target="_blank" rel="noopener noreferrer" href="https://duncan-britt.github.io/splice-docs">documentation website.</a> I will use this space to talk about the implementation of the language, design process/choices, challenges, and open issues.
 
 <br>
 
@@ -140,7 +139,7 @@ My original design for the syntax didn't stick. It looked like this:
 
 I got as far as making a prototype documentation site but decided I didn't love the amount of angle brackets. It wasn't much trouble to change the syntax, but even so, it goes to show that it's worthwhile to make sure you're solving the right problem before you start coding.
 
-For the implementation, I started by hardcoding a prototype AST as well as a test 'scope'- a set of data with which to test the compiler. Then I went on to writing the generator of the language. I think this was wise because it allowed me to easily modify the AST to suit the needs of the generator when I discovered something needed to change, without having to rewrite a parser. So implemented that and the in-template functions before working on the lexing and parsing.
+For the implementation, I started by hardcoding a prototype AST as well as a test 'scope'- a set of data with which to test the compiler. Then I went on to writing the generator of the language. I think this was wise because it allowed me to easily modify the AST to suit the needs of the generator when I discovered something needed to change, without having to rewrite components of the parser.
 
 <br>
 
@@ -148,7 +147,7 @@ For the implementation, I started by hardcoding a prototype AST as well as a tes
 
 After creating the documentation website using Splice and thinking that it was good to go, I ventured to try opening the website in Safari, and lo and behold, the site crashed immediately. I learned the hard way that not all browsers support look-behinds in regular expressions, because I had **49** of them in my Splice compiler.
 
-The need for these look-behinds in my regular expressions was to avoid my escape character: `\`. This meant that I had to replace much of the logic for tokenization without the benefit of regular expressions, and I think the readability of my code has benefited from this.
+The need for these look-behinds in my regular expressions was to avoid my escape character: `\`. This meant that I had to replace much of the logic for tokenization without the benefit of regular expressions. On the bright side, I think the readability of my code has benefited significantly from this change.
 
 To do this, I wrote a helper function to do most of the heavy lifting:
 
