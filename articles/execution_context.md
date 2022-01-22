@@ -28,7 +28,7 @@ const object = { bar: foo };
 foo();        // prints Hello, World!
 object.bar(); // prints Hello, World!
 </textarea>
-![diagram](images/1.svg)
+![diagram](public/images/1.svg)
 
 Rather than thinking in terms of functions vs methods, in JavaScript, it makes more sense to think in terms of *function invocation*- via **`foo();`** vs *method invocation*- à la **`object.bar()`**. Method invocation in JavaScript is when a function is called on an object. Another way of saying this is that it is invoked with an *explicit receiver*- whereas function invocation is when a function is invoked with an *implicit receiver*. The implicit receiver of a (function) invocation is the global object. In a browser, this is the **`window`** object.
 

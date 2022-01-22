@@ -43,7 +43,7 @@ would look something like this:
 
 <figure>
 
-![diagram](images/ast.svg)
+![diagram](public/images/ast.svg)
 
 </figure>
 <figcaption>An example Splice AST</figcaption>

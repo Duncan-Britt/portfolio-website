@@ -55,7 +55,7 @@ I parsed the data from a csv file of 5,000 most commonly used English words into
 
 <figure>
 
-![diagram](images/graph.svg)
+![diagram](public/images/graph.svg)
 
 </figure>
 <figcaption>"The" and its neighbors.</figcaption>

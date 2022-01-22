@@ -18,7 +18,7 @@ As we shall see, `this` is useful because it allows programmers to reference the
 
 In Javascript, functions are a type of object. As such, they contain properties like any object can. Every function has a **`prototype`** property which, by default, references an object. This prototype object contains a **`constructor`** property which, by default, references the function.
 
-![diagram](images/2.svg)
+![diagram](public/images/2.svg)
 
 To demonstrate this with code, try the following in your browser’s console:
 
@@ -41,7 +41,7 @@ When creating an object via an object literal, its `[[Prototype]]` property refe
 
 <figure>
 
-![diagram](images/3.svg)
+![diagram](public/images/3.svg)
 
 </figure>
 <figcaption>Note that <code>Object</code> is a JavaScript function.</figcaption>
@@ -54,7 +54,7 @@ Object.prototype.__proto__ === null; // true;
 
 Functions being objects, they also have their own `[[Prototype]]` which I have omitted from the above diagram since its not central to the point of this article. However, for those who are curious, here’s something to chew on:
 
-![diagram](images/4.svg)
+![diagram](public/images/4.svg)
 
 
 #### Behavior Delegation and the Prototype Chain
@@ -63,7 +63,7 @@ The *prototype chain* of an object refers to the series of objects referenced by
 
 <figure>
 
-![diagram](images/5.svg)
+![diagram](public/images/5.svg)
 
 </figure>
 <figcaption>A parent is the <code>\[\[Prototype\]\]</code> of its child.</figcaption>
@@ -81,7 +81,7 @@ Type `Object.prototype` into your browser’s console to view the available meth
 
 <figure>
 
-![diagram](images/6.svg)
+![diagram](public/images/6.svg)
 
 </figure>
 
@@ -115,7 +115,7 @@ Visualized:
 
 <figure>
 
-![diagram](images/7.svg)
+![diagram](public/images/7.svg)
 
 </figure>
 
@@ -133,7 +133,7 @@ instance.hasOwnProperty('xyz'); // false;
 
 <figure>
 
-![diagram](images/8.svg)
+![diagram](public/images/8.svg)
 
 </figure>
 <br />
@@ -163,7 +163,7 @@ childConstructor.prototype.__proto__ === Object.prototype;
 </textarea>
 <br />
 
-![diagram](images/9.svg)
+![diagram](public/images/9.svg)
 <br />
 
 Therefore, no property by the name of `xyz` can be found on the child instance’s prototype chain. In order to have access to `xyz`, we need to put `Constructor.prototype` on the child instance’s prototype chain by setting `ChildConstructor.prototype`’s `[[Prototype]]` to be `Constructor.prototype`.  What a mouthful! Our next naive attempt might look something like this:
@@ -217,13 +217,13 @@ childInstance.constructor === ChildConstructor;
 
 `Object.create`, when called, creates and returns a new object whose `[[Prototype]]` is the argument to the invocation of `Object.create`. But this new object doesn’t have its own `constructor` property. Notice that we assign `ChildConstructor` to `ChildConstructor.prototype.constructor`. Otherwise the expression `childInstance.constructor` would return `Constructor` instead of `ChildConstructor`.
 
-![diagram](images/10.svg)
+![diagram](public/images/10.svg)
 
 #### Objects Linking to Other Objects (OLOO)
 
 To quickly build a mental model of the OLOO pattern of object creation, compare the above diagram to the following:
 
-![diagram](images/11.svg)
+![diagram](public/images/11.svg)
 <br />
 
 The purpose of `Object.create` is worth reiterating:  
@@ -252,7 +252,7 @@ instance.__proto__ === Prototype; // true
 </textarea>
 <br />
 
-![diagram](images/12.svg)
+![diagram](public/images/12.svg)
 <br />
 
 The process for making a subtype is fairly straightforward.
@@ -274,7 +274,7 @@ childInstance.hasOwnPrototype('addA');      // false
 </textarea>
 <br />
 
-![diagram](images/13.svg)
+![diagram](public/images/13.svg)
 <br />
 
 </article>
