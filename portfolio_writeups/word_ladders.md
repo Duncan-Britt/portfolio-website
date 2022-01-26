@@ -60,7 +60,7 @@ I parsed the data from a csv file of 5,000 most commonly used English words into
 </figure>
 <figcaption>"The" and its neighbors.</figcaption>
 
-Among my 5k words, it is possible find two words between which there simply is no path. So inorder to not waste time solving for the shortest path between two words for whom no path exists, my program first creates a ladder randomly.
+Among my 5k words, it is possible find two words between which there simply is no path. So in order to not waste time solving for the shortest path between two words for which no path exists, my program first creates a ladder randomly.
 
 Then, my program takes the first and last words from the random ladder, ignores the rest, and attempts to find the shortest path between them using a breadth first search of the graph. If it takes too long, (if the queue is getting too long) it will inform the calling method which will try again with an entirely new random word ladder.
 
