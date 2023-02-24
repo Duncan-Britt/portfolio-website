@@ -1,6 +1,6 @@
 11/14/2021
 <div>
-<a class="article_link" href="#oojs">Mechanics Of Object Orient JavaScript</a><time datetime="2021-11-14">11/14/2021</time>
+<a class="article_link" href="#oojs">Mechanics Of Object Oriented JavaScript</a><time datetime="2021-11-14">11/14/2021</time>
 <article id="oojs" loading="lazy">
 <br>
 
